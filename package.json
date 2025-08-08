@@ -1,0 +1,26 @@
+{
+  "name": "textile-ts",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "check": "biome check src --write",
+    "format": "biome format src --write",
+    "test:lcov": "tsx --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=tests/lcov.info",
+    "test": "tsx --test"
+  },
+  "keywords": [
+    "Textile",
+    "textile-js"
+  ],
+  "author": "Pho Thin Mg <phothinmg@disroot.org>",
+  "license": "Apache-2.0",
+  "description": "Typescript implementation of textile-js",
+  "devDependencies": {
+    "@biomejs/biome": "^2.1.4",
+    "@types/node": "^24.2.1",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "htmlparser2": "^10.0.0"
+  }
+}
