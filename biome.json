@@ -6,13 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": true,
-    "includes": [
-      "src/index.ts",
-      "src/textile-js/index.ts",
-      "src/textile-js/types.ts"
-    ],
-    "experimentalScannerIgnores": ["src/textile-js/parsers.js"]
+    "ignoreUnknown": true
   },
   "formatter": {
     "enabled": true,
@@ -24,10 +18,14 @@
       "recommended": true,
       "suspicious": {
         "noExplicitAny": "off",
-        "noAssignInExpressions": "off"
+        "noAssignInExpressions": "off",
+        "noImplicitAnyLet": "off"
       },
       "correctness": {
         "noEmptyCharacterClassInRegex": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off"
       }
     }
   },

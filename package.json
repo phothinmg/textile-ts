@@ -3,24 +3,72 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "check": "biome check src --write",
-    "format": "biome format src --write",
-    "test:lcov": "tsx --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=tests/lcov.info",
-    "test": "tsx --test"
+    "build": "tshy",
+    "format": "biome format --write src",
+    "lint": "biome check --write src",
+    "check": "biome check src",
+    "test": "tsx --test",
+    "coverage": "mcr --import tsx -c mcr.config.cjs tsx --test tests/*.test.ts",
+    "codecov": "mcr --import tsx -c codecov.config.cjs tsx --test tests/*.test.ts"
   },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "dist",
+    "package.json"
+  ],
   "keywords": [
-    "Textile",
-    "textile-js"
+    "textile",
+    "textile-js",
+    "textile markup"
   ],
   "author": "Pho Thin Mg <phothinmg@disroot.org>",
   "license": "Apache-2.0",
   "description": "Typescript implementation of textile-js",
   "devDependencies": {
     "@biomejs/biome": "^2.1.4",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.2.1",
+    "monocart-coverage-reports": "^2.12.6",
+    "tshy": "^3.0.2",
+    "tsx": "^4.20.3",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "htmlparser2": "^10.0.0"
-  }
+    "htmlparser2": "^10.0.0",
+    "js-yaml": "^4.1.0"
+  },
+  "tshy": {
+    "exports": {
+      ".": "./src/index.ts"
+    },
+    "selfLink": false
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phothinmg/textile-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/phothinmg/textile-ts.git/issues"
+  },
+  "homepage": "https://github.com/phothinmg/textile-ts.git",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js"
 }

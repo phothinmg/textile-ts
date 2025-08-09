@@ -4,9 +4,26 @@ node_modules
 a.ts 
 b.ts 
 example.textile 
+.notes
+a.txt
 
 # source
 src 
 
+# Workflows
+.github
+
 # editor
 .vscode
+
+# Build
+docs
+.tshy
+# Others
+
+Makefile
+mcr.config.cjs
+codecov.config.cjs
+package-lock.json
+textile-logo.svg
+tsconfig.json

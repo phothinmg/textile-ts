@@ -7,6 +7,8 @@
         "Dimsign",
         "Emdash",
         "Endash",
+        "frontmatter",
+        "monocart",
         "nodenext",
         "notextile",
         "onclosetag",
@@ -15,6 +17,7 @@
         "rowgroups",
         "rowspan",
         "Textpattern",
+        "tshy",
         "Þorsteinsson"
     ]
 }

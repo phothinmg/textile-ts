@@ -23,6 +23,7 @@ import type {
 	TagName,
 	Token,
 } from "./shares/types.js";
+
 // ===================================================================================//
 
 const allowedBlockTags = {
@@ -40,6 +41,21 @@ const allowedBlockTags = {
 	notextile: 1,
 };
 const hasOwn = Object.prototype.hasOwnProperty;
+/**
+ * Parse a given string of source text into a JSON-ML definition list,
+ * handling various textile markup and HTML elements.
+ *
+ * @param src - The source string to be parsed, containing a definition list.
+ * @param options - Optional parsing options that may influence processing,
+ *                  such as enabling line breaks.
+ *
+ * @returns A JSON-ML node representing the parsed definition list.
+ *
+ * The function iterates over the source text, identifying and processing
+ * different elements such as definition terms and definitions.
+ * It utilizes regular expressions to match specific patterns and constructs
+ * corresponding JSON-ML nodes, which are collected and returned as the result.
+ */
 function parseDefList(src: string, options?: Options) {
 	const ribbon = new Ribbon(src.trim());
 	const defList = ["dl", "\n"];
@@ -75,6 +91,16 @@ function parseDefList(src: string, options?: Options) {
 	return defList;
 }
 
+/**
+ * Extends a target object with properties from one or more source objects.
+ * Properties from later source objects overwrite earlier ones.
+ *
+ * @param target - The target object to be extended.
+ * @param args - One or more source objects containing properties to merge
+ *               into the target object.
+ * @returns The modified target object with merged properties.
+ */
+
 function extend(target: Record<string, any>, ...args: any[]) {
 	for (let i = 1; i < args.length; i++) {
 		const src = args[i];
@@ -88,6 +114,20 @@ function extend(target: Record<string, any>, ...args: any[]) {
 	}
 	return target;
 }
+/**
+ * Converts a given string into an array of JSON-ML nodes, representing paragraphs.
+ * Splits the input string by two or more newlines, processes each segment, and
+ * constructs nodes with inline content.
+ *
+ * @param s - The source string to be processed into paragraphs.
+ * @param tag - Optional HTML tag name to wrap each paragraph. Defaults to "p".
+ * @param pba - Optional attributes to apply to the paragraph tag.
+ * @param linebreak - Optional string to insert between paragraphs.
+ * @param options - Additional parsing options.
+ *
+ * @returns An array of JSON-ML nodes representing the paragraphs.
+ */
+
 function paragraph(
 	s: string,
 	tag?: TagName,
@@ -115,6 +155,23 @@ function paragraph(
 	});
 	return out;
 }
+/**
+ * Converts a given string into an array of JSON-ML nodes, representing a document.
+ * Splits the input string by two or more newlines, processes each segment, and
+ * constructs nodes with inline content.
+ *
+ * @param src - The source string to be processed, containing a document body.
+ * @param option - Optional parsing options that may influence processing,
+ *                 such as enabling line breaks.
+ *
+ * @returns A JSON-ML node representing the parsed document.
+ *
+ * The function iterates over the source text, identifying and processing
+ * different elements such as block-level HTML, named blocks, HTML comments,
+ * footnotes, definition lists, tables, and paragraphs.
+ * It utilizes regular expressions to match specific patterns and constructs
+ * corresponding JSON-ML nodes, which are collected and returned as the result.
+ */
 export default function textile2jml(src: string, option?: Options): JsonMLRoot {
 	const options = option ? option : { breaks: true };
 	const list = new Builder();
