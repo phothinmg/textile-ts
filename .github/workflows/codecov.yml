@@ -17,4 +17,4 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./mcr/codecov.json
+          files: ./codecov/codecov.json
