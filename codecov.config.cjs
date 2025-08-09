@@ -1,6 +1,6 @@
 module.exports = {
   name: "Textile Ts",
-  outputDir: "codecov",
+  outputDir: "coverage",
   reports: [["codecov"]],
   entryFilter: {
     "**/node_modules/**": false,
