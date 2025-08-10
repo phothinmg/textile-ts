@@ -1,6 +1,6 @@
 ![textile-logo](./textile-logo.svg)
 
-[![Checked with Biome][biome-check]][biome] [![codecov][codecov-svg]][codecov-url]
+[![Checked with Biome][biome-check]][biome] 
 
 ## About
 
@@ -10,9 +10,23 @@ This implementation extends [textile-js][textilejs] by [Borgar Þorsteinsson][bo
 
 Please visit [here][textile-web]
 
+## Install
+
+```bash
+npm i textile-ts
+```
+
 ## Use
 
+### Basic
 
+```ts
+import Textile from "textile-ts";
+
+const str = "h1. Hello World"
+const textile = new Textile();
+const result = textile.parse(str).html //
+```
 
 ### Syntax Highlighting
 
