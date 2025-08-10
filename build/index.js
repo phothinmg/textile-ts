@@ -40,7 +40,7 @@ const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
 //
 const buildFns = [
   async function () {
-    await forceRemoveDir(".dist");
+    await forceRemoveDir("./dist");
   },
   async function () {
     await wait(1000);
@@ -53,6 +53,7 @@ const buildFns = [
         external: ["htmlparser2", "js-yaml"],
         treeShaking: true,
         sourcemap: true,
+        minify: true,
         banner: {
           js: bannerText,
         },
@@ -75,6 +76,7 @@ const buildFns = [
         external: ["htmlparser2", "js-yaml"],
         treeShaking: true,
         sourcemap: true,
+        minify: true,
         banner: {
           js: bannerText,
         },
@@ -83,6 +85,24 @@ const buildFns = [
             experimentalBundling: true,
           }),
         ],
+      })
+      .catch(() => process.exit(1));
+  },
+  async function () {
+    await wait(1000);
+    await esbuild
+      .build({
+        entryPoints: ["src/textile.ts"],
+        outdir: "./dist/browser",
+        format: "iife",
+        bundle: true,
+        treeShaking: true,
+        sourcemap: true,
+        minify: true,
+        banner: {
+          js: bannerText,
+        },
+        globalName: "textile",
       })
       .catch(() => process.exit(1));
   },
