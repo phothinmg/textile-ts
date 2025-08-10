@@ -3,16 +3,15 @@
 <div align="center">
     <img alt="textile-logo" src="textile-logo.svg">
   <div>
-    <a href="https://biomejs.dev"><img alt="biome" src="https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome"><a>  <img alt="npm-v" src="https://img.shields.io/npm/v/textile-ts?logo=npm"> <a href=""><img alt="coverage" src=" https://img.shields.io/badge/coverage-96.0-brightgreen?style=flat"><a>
+    <a href="https://biomejs.dev"><img alt="biome" src="https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome"><a>  <img alt="npm-v" src="https://img.shields.io/npm/v/textile-ts?logo=npm"> <img alt="coverage" src="https://img.shields.io/badge/coverage-96.0-brightgreen?style=flat">
   </div>
 </div>
 
 ---
 
-
 ## About
 
-This implementation extends  [textile-js][textilejs] by [Borgar Þorsteinsson][borgar].
+This implementation extends [textile-js][textilejs] by [Borgar Þorsteinsson][borgar].
 
 ## Textile Syntax Guide
 
