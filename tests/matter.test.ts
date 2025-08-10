@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import frontmatter from "../src/frontmatter.js";
+import frontmatter from "../src/frontmatter/index.js";
 
 describe("matter function", () => {
   it("should return content with no frontmatter separator", () => {

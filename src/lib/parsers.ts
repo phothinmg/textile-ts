@@ -1,8 +1,7 @@
-import { Builder, Ribbon } from "./builder.js";
-import Constants, { type CharToTag } from "./shares/constants.js";
-import { merge, reIndent } from "./shares/helpers.js";
-import { compile, escape_sc, regexp } from "./shares/re.js";
-import ReTests from "./shares/retest.js";
+import Constants, { type CharToTag } from "../shares/constants.js";
+import { merge, reIndent } from "../shares/helpers.js";
+import { compile, escape_sc, regexp } from "../shares/re.js";
+import ReTests from "../shares/retest.js";
 import type {
 	_Options,
 	CloseToken,
@@ -15,7 +14,8 @@ import type {
 	SingleToken,
 	TagName,
 	Token,
-} from "./shares/types.js";
+} from "../shares/types.js";
+import { Builder, Ribbon } from "./builder.js";
 
 // ========================================================================================================//
 

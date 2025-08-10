@@ -1,3 +1,16 @@
+import Constants from "../shares/constants.js";
+import { regexp } from "../shares/re.js";
+import ReTests from "../shares/retest.js";
+import type {
+	CloseToken,
+	JsonMLAttributes,
+	JsonMLNode,
+	JsonMLRoot,
+	OpenToken,
+	Options,
+	TagName,
+	Token,
+} from "../shares/types.js";
 import { Builder, Ribbon } from "./builder.js";
 import {
 	copyAttr,
@@ -10,19 +23,6 @@ import {
 	parseTable,
 	tokenize,
 } from "./parsers.js";
-import Constants from "./shares/constants.js";
-import { regexp } from "./shares/re.js";
-import ReTests from "./shares/retest.js";
-import type {
-	CloseToken,
-	JsonMLAttributes,
-	JsonMLNode,
-	JsonMLRoot,
-	OpenToken,
-	Options,
-	TagName,
-	Token,
-} from "./shares/types.js";
 
 // ===================================================================================//
 
@@ -80,7 +80,7 @@ function parseDefList(src: string, options?: Options) {
 			"\t",
 			["dd"].concat(
 				/=:$/.test(def)
-					? textile2jml(def.slice(0, -2).trim(), options)
+					? textileToJML(def.slice(0, -2).trim(), options)
 					: (parseInline(def, options) as any),
 			) as any,
 			"\n",
@@ -155,24 +155,30 @@ function paragraph(
 	});
 	return out;
 }
+
 /**
- * Converts a given string into an array of JSON-ML nodes, representing a document.
- * Splits the input string by two or more newlines, processes each segment, and
- * constructs nodes with inline content.
+ * Converts a Textile-formatted string into a JsonML (JSON Markup Language) tree.
  *
- * @param src - The source string to be processed, containing a document body.
- * @param option - Optional parsing options that may influence processing,
- *                 such as enabling line breaks.
+ * This function parses the given Textile markup and returns its representation as a JsonMLRoot,
+ * which can be used for further processing or rendering as HTML or other formats.
  *
- * @returns A JSON-ML node representing the parsed document.
+ * @param src - The Textile source string to be converted.
+ * @param option - Optional parsing options. If not provided, defaults to `{ breaks: true }`.
+ * @returns The root of the JsonML tree representing the parsed Textile content.
  *
- * The function iterates over the source text, identifying and processing
- * different elements such as block-level HTML, named blocks, HTML comments,
- * footnotes, definition lists, tables, and paragraphs.
- * It utilizes regular expressions to match specific patterns and constructs
- * corresponding JSON-ML nodes, which are collected and returned as the result.
+ * @example
+ * ```typescript
+ * import textileToJML from './textile-jml';
+ *
+ * const textile = "h1. Hello World\n\nThis is *Textile* markup.";
+ * const jml = textileToJML(textile);
+ * console.log(JSON.stringify(jml, null, 2));
+ * ```
  */
-export default function textile2jml(src: string, option?: Options): JsonMLRoot {
+export default function textileToJML(
+	src: string,
+	option?: Options,
+): JsonMLRoot {
 	const options = option ? option : { breaks: true };
 	const list = new Builder();
 	let linkRefs = <Record<string, any>>{};
@@ -367,7 +373,7 @@ export default function textile2jml(src: string, option?: Options): JsonMLRoot {
 								const isBlock =
 									/\n\r?\n/.test(innerHTML) || tag === "ol" || tag === "ul";
 								const innerElm = isBlock
-									? textile2jml(innerHTML, options)
+									? textileToJML(innerHTML, options)
 									: parseInline(
 											innerHTML,
 											extend({}, options, { breaks: false }),

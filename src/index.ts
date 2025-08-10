@@ -1,8 +1,10 @@
-import frontmatter, { type FrontMatterResult } from "./frontmatter.js";
 import highlightCodeBlock, {
 	type HighlightFunc,
-} from "./highlight-codeblock.js";
-import { html2jml, jml2html } from "./html-jml.js";
+} from "./extensions/highlight-codeblock.js";
+import frontmatter, { type FrontMatterResult } from "./frontmatter/index.js";
+import htmlToJML from "./htmlToHtml/index.js";
+import jmlToHTML from "./lib/jml-html.js";
+import textileToJML from "./lib/textile-jml.js";
 import type {
 	JsonMLAttributes,
 	JsonMLElement,
@@ -11,12 +13,11 @@ import type {
 	JsonMLRoot,
 	TagName,
 } from "./shares/types.js";
-import textile2jml from "./textile-jml.js";
 export interface TextileOption {
 	breaks?: boolean;
 	codeBlockHighlightFunction?: HighlightFunc;
 }
-const isPlainObj = (obj: any) => Object.keys(obj).length === 0;
+//const isPlainObj = (obj: any) => Object.keys(obj).length === 0;
 class Textile<T extends Record<string, any> = Record<string, any>> {
 	private _opts: TextileOption;
 	private _raw: string;
@@ -43,7 +44,7 @@ class Textile<T extends Record<string, any> = Record<string, any>> {
 		if (!content) {
 			throw new Error("ERROR: Textile raw string required");
 		}
-		this._tree = textile2jml(content, this._opts);
+		this._tree = textileToJML(content, this._opts);
 		if (this._opts.codeBlockHighlightFunction) {
 			this._tree = highlightCodeBlock(
 				this._tree,
@@ -51,19 +52,18 @@ class Textile<T extends Record<string, any> = Record<string, any>> {
 			);
 		}
 		//
-		this._html = jml2html(this._tree);
+		this._html = jmlToHTML(this._tree);
 	}
 	parse(raw: string) {
 		this._raw = raw;
 		this._init();
-		const _data = isPlainObj(this._data) ? {} : { data: this._data };
 		return {
 			html: this._html,
-			..._data,
+			data: this._data,
 		};
 	}
 	static htmlToJML(html: string): JsonMLNodes {
-		return html2jml(html);
+		return htmlToJML(html);
 	}
 	static frontmatter<T extends Record<string, any> = Record<string, any>>(
 		raw: string,
@@ -71,7 +71,7 @@ class Textile<T extends Record<string, any> = Record<string, any>> {
 		return frontmatter<T>(raw);
 	}
 	static textToHTML(raw: string): string {
-		return jml2html(textile2jml(raw));
+		return jmlToHTML(textileToJML(raw));
 	}
 }
 

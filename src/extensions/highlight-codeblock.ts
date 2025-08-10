@@ -1,6 +1,6 @@
-import { html2jml } from "./html-jml.js";
-import { isAttr } from "./shares/helpers.js";
-import type { JsonMLElement, JsonMLNode, JsonMLNodes } from "./shares/types.js";
+import htmlToJML from "../htmlToHtml/index.js";
+import { isAttr } from "../shares/helpers.js";
+import type { JsonMLElement, JsonMLNode, JsonMLRoot } from "../shares/types.js";
 
 export type HighlightFunc = (code: string, lang: string) => string;
 const is_cb = (node: JsonMLNode) =>
@@ -27,10 +27,10 @@ const findLang = (obj: Record<string, any>) => {
 };
 
 const highlightCodeBlock = (
-	nodes: JsonMLNodes,
+	tree: JsonMLRoot,
 	highlightFun: HighlightFunc,
-): JsonMLNodes => {
-	return nodes.map((node) => {
+): JsonMLRoot => {
+	return tree.map((node) => {
 		if (Array.isArray(node) && is_cb(node)) {
 			const foundCode = node.find((n) => Array.isArray(n) && n[0] === "code");
 			let lang: string | null = null;
@@ -41,7 +41,7 @@ const highlightCodeBlock = (
 				code = foundCode[2];
 				if (lang && code) {
 					const highlighted = highlightFun(code, lang);
-					const newMl = html2jml(highlighted);
+					const newMl = htmlToJML(highlighted);
 					const newNode = [foundCode[0], foundCode[1], ...newMl];
 					node.splice(idx, 1, newNode);
 				}

@@ -1,4 +1,4 @@
-import type { JsonMLNode, JsonMLNodes, JsonMLRoot } from "./shares/types.js";
+import type { JsonMLNode, JsonMLNodes, JsonMLRoot } from "../shares/types.js";
 
 class Ribbon {
 	private org: string;
