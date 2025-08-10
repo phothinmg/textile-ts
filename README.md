@@ -1,11 +1,18 @@
-![textile-logo](./textile-logo.svg)
+# textile-ts
 
-[![Checked with Biome][biome-check]][biome] ![NPM Version][npm-version]
+<div align="center">
+    <img alt="textile-logo" src="textile-logo.svg">
+  <div>
+    <a href="https://biomejs.dev"><img alt="biome" src="https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome"><a>  <img alt="npm-v" src="https://img.shields.io/npm/v/textile-ts?logo=npm"> <a href=""><img alt="coverage" src=" https://img.shields.io/badge/coverage-96.0-brightgreen?style=flat"><a>
+  </div>
+</div>
+
+---
 
 
 ## About
 
-This implementation extends [textile-js][textilejs] by [Borgar Þorsteinsson][borgar].
+This implementation extends  [textile-js][textilejs] by [Borgar Þorsteinsson][borgar].
 
 ## Textile Syntax Guide
 
@@ -24,14 +31,14 @@ npm i textile-ts
 ```ts
 import Textile from "textile-ts";
 
-const str = "h1. Hello World"
+const str = "h1. Hello World";
 const textile = new Textile();
-const result = textile.parse(str).html //
+const result = textile.parse(str).html; //
 ```
 
 ### Syntax Highlighting
 
-#### Example with highlight-js 
+#### Example with highlight-js
 
 ```ts
 import hljs from "highlight.js";
@@ -52,10 +59,8 @@ const hljsExtension: TextileExtension = {
   },
 };
 
-
 const textile = new Textile();
 const result = textile.use(hljsExtension).parse(code).html;
-
 ```
 
 More about highlight-js: https://highlightjs.org/
@@ -87,8 +92,6 @@ const result = textile.use(prismExtension).parse(code).html;
 
 More about prism : https://prismjs.com/
 
-
-
 <!-- Definition -->
 
 [textilejs]: https://github.com/borgar/textile-js
@@ -97,3 +100,4 @@ More about prism : https://prismjs.com/
 [biome]: https://biomejs.dev
 [biome-check]: https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome
 [npm-version]: https://img.shields.io/npm/v/textile-ts?logo=npm
+[cover]: https://img.shields.io/badge/coverage-96.0-brightgreen?style=flat
