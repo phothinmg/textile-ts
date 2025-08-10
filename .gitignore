@@ -1,0 +1,13 @@
+node_modules
+
+# opts
+a.ts 
+b.ts 
+example.textile
+.notes
+a.txt
+
+# Build
+docs
+dist
+.tshy
