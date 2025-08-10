@@ -8,8 +8,7 @@
     "lint": "biome check --write src",
     "check": "biome check src",
     "test": "tsx --test",
-    "coverage": "mcr --import tsx -c mcr.config.cjs tsx --test tests/*.test.ts",
-    "codecov": "mcr --import tsx -c codecov.config.cjs tsx --test tests/*.test.ts"
+    "coverage": "mcr --import tsx -c mcr.config.cjs tsx --test tests/*.test.ts"
   },
   "files": [
     "README.md",

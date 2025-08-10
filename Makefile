@@ -33,7 +33,5 @@ check:
 coverage:
 	$(SAY) "Generate coverage report..."
 	@npm run $@
-codecov:
-	$(SAY) "Generate coverage report for codecov..."
-	@npm run $@
+
 

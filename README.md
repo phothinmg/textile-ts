@@ -1,6 +1,7 @@
 ![textile-logo](./textile-logo.svg)
 
-[![Checked with Biome][biome-check]][biome] 
+[![Checked with Biome][biome-check]][biome] ![NPM Version][npm-version]
+
 
 ## About
 
@@ -95,5 +96,4 @@ More about prism : https://prismjs.com/
 [borgar]: https://github.com/borgar
 [biome]: https://biomejs.dev
 [biome-check]: https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome
-[codecov-svg]: https://codecov.io/gh/phothinmg/textile-ts/graph/badge.svg?token=Td4lmE382u
-[codecov-url]: https://codecov.io/gh/phothinmg/textile-ts
+[npm-version]: https://img.shields.io/npm/v/textile-ts?logo=npm
