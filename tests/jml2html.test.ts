@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import jmlToHTML from "../src/jml-html.js";
+import jmlToHTML from "../src/lib/jml-html.js";
 import type { JsonMLRoot } from "../src/shares/types.js";
 
 describe("jmlToHTML", () => {

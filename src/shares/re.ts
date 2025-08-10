@@ -60,7 +60,7 @@ const pattern = {
 export function escape_sc(src: string) {
 	return src.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
-function collapse(src: string) {
+export function collapse(src: string) {
 	return src.replace(/(?:#.*?(?:\n|$))/g, "").replace(/\s+/g, "");
 }
 function expandPatterns(src: string): string {

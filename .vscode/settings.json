@@ -8,6 +8,7 @@
         "Emdash",
         "Endash",
         "frontmatter",
+        "hljs",
         "monocart",
         "nodenext",
         "notextile",
@@ -16,6 +17,7 @@
         "ontext",
         "rowgroups",
         "rowspan",
+        "shiki",
         "Textpattern",
         "tshy",
         "Þorsteinsson"

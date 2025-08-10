@@ -101,7 +101,7 @@ function parseDefList(src: string, options?: Options) {
  * @returns The modified target object with merged properties.
  */
 
-function extend(target: Record<string, any>, ...args: any[]) {
+export function extend(target: Record<string, any>, ...args: any[]) {
 	for (let i = 1; i < args.length; i++) {
 		const src = args[i];
 		if (src != null) {

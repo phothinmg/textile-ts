@@ -4,7 +4,7 @@ import type {
 	JsonMLNodes,
 	JsonMLRoot,
 	TagName,
-} from "../shares/types.js";
+} from "../../shares/types.js";
 
 /**
  * Converts an HTML string into its equivalent JsonML (JSON Markup Language) representation.

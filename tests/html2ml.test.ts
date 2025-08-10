@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import htmlToJML from "../src/htmlToHtml/index.js";
+import htmlToJML from "../src/extensions/htmlToJLM/index.js";
 
 describe("htmlToJML", () => {
   it("should return an empty array for an empty HTML string", () => {
@@ -66,3 +66,4 @@ describe("htmlToJML", () => {
     assert.deepEqual(result, expected);
   });
 });
+

@@ -1,6 +1,5 @@
 ![textile-logo](./textile-logo.svg)
 
-
 [![Checked with Biome][biome-check]][biome] [![codecov][codecov-svg]][codecov-url]
 
 ## About
@@ -10,6 +9,68 @@ This implementation extends [textile-js][textilejs] by [Borgar Þorsteinsson][bo
 ## Textile Syntax Guide
 
 Please visit [here][textile-web]
+
+## Use
+
+
+
+### Syntax Highlighting
+
+#### Example with highlight-js 
+
+```ts
+import hljs from "highlight.js";
+import Textile, { type TextileExtension } from "textile-ts";
+
+const code = `
+bc(*js foo #bar)..
+function foo(bar) {
+  return bar
+}
+`;
+// creating hljs extension
+const hljsExtension: TextileExtension = {
+  type: "syntaxHighlight",
+  highlighter: "highlight.js",
+  function: (code, lang) => {
+    return hljs.highlight(code, { language: lang }).value;
+  },
+};
+
+
+const textile = new Textile();
+const result = textile.use(hljsExtension).parse(code).html;
+
+```
+
+More about highlight-js: https://highlightjs.org/
+
+#### Example with prism
+
+```ts
+import Prism from "prismjs";
+import Textile, { type TextileExtension } from "textile-ts";
+
+const code = `
+bc(*js foo #bar)..
+function foo(bar) {
+  return bar
+}
+`;
+// creating prism extension
+const prismExtension: TextileExtension = {
+  type: "syntaxHighlight",
+  highlighter: "prismjs",
+  function: (code, lang) => {
+    return Prism.highlight(code, Prism.languages[lang], lang);
+  },
+};
+
+const textile = new Textile();
+const result = textile.use(prismExtension).parse(code).html;
+```
+
+More about prism : https://prismjs.com/
 
 
 

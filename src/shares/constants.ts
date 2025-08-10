@@ -55,7 +55,7 @@ const Constants = {
 		"@": "code",
 	},
 	charToTag: {
-		_: "thead",
+		"^": "thead",
 		"~": "tfoot",
 		"-": "tbody",
 	},
