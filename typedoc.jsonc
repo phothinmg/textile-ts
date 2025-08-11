@@ -10,6 +10,6 @@
   "favicon": "textile-logo.svg",
   "name": "Textile Ts",
   "typePrintWidth": 60,
-  "plugin": ["typedoc-plugin-rename-defaults"],
-  "projectDocuments": ["documents/syntax.md"]
+  "plugin": ["typedoc-plugin-rename-defaults"]
+  //"projectDocuments": ["documents/syntax.md"]
 }
