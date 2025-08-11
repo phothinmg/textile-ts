@@ -21,6 +21,7 @@ docs
 .tshy
 build
 coverage
+documents
 # Others
 
 Makefile

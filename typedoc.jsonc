@@ -1,16 +1,15 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPointStrategy": "expand",
   "entryPoints": ["src/*"],
   "out": "./docs",
+  "includeHierarchySummary": false,
   "headings": {
     "readme": false,
     "document": false
   },
-  "navigationLinks": {
-    "Coverage Report": ""
-  },
   "favicon": "textile-logo.svg",
   "name": "Textile Ts",
-  "plugin": ["typedoc-plugin-rename-defaults"]
+  "typePrintWidth": 60,
+  "plugin": ["typedoc-plugin-rename-defaults"],
+  "projectDocuments": ["documents/syntax.md"]
 }

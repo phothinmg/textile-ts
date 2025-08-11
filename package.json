@@ -9,7 +9,8 @@
     "check": "biome check src",
     "test": "tsx --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=tests/lcov.info",
     "coverage": "mcr --import tsx -c mcr.config.cjs tsx --test tests/*.test.ts",
-    "docs": "typedoc && npm run coverage"
+    "docs": "typedoc && npm run coverage",
+    "deploy": "npm run docs && gh-pages -d docs"
   },
   "files": [
     "README.md",
